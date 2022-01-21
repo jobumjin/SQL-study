@@ -1,0 +1,70 @@
+1. DB
+    - 데이터(사용 가능한 정보) 의미
+
+2. RDBMS
+    - 데이터를 저장 및 관리할 수 있는 시스템(sw)
+    - 제품군 
+        Oracle / mysql / mariadb / DB2(IBM) / MS sql(MS) / ...
+
+    - 구조
+        엑셀 table 처럼 관계성 고려해서 설계된 데이터 저장하는 방식
+        가로 - row / 행 / tuple
+        세로 - 속성 / column
+
+3. RDBMS를 사용하기 위한 tool
+    1. oracle 설치시 sqlplus 자동 설치
+        - 100% 모든 개발자가 작업
+    2. IDE
+        - sql developer(Oracle 벤더사)
+        - DBbever
+        - mysql workbench
+        ...
+
+4. sql
+    - 구조적 질의 언어
+    - db와 소통하는 언어
+    - IT 필수 소통 언어
+    - 종류
+        데이터 구조 생성 - table 생성 / create
+        데이터 저장 - table에 데이터 저장 / insert
+        존재하는 데이터 수정 - table에 데이터 수정 / update
+        존재하는 데이터 삭제 - table에 데이터 삭제 / delete
+        데이터 구조 삭제 - table 삭제 / drop
+        존재하는 데이터 검색 - table의 데이터 검색 / select (*)
+        table에 저장 가능한 데이터들의 정제 - 제약조건
+
+5. Oracle DB 학습 자원
+    1. 설치 버전
+        - 개인 학습용 버전
+        - 상용 db로 사용 불가
+        - 학습용 데이터가 잘 구성된 table 다수 존재
+            - 제공받는 계정 다수 존재
+                id : SCOTT / pw : TIGER
+                    - oracle db 내부에서 file로 제공
+                    - 설정 후 사용 가능
+                        방법
+                        cmd>sqlplus system/manager
+                        sql>@C:\oraclexe\app\oracle\product\11.2.0\server\rdbms\admin\scott.sql
+                        sql>
+                        - system이라는 admin 에서 일반 사용자인 SCOTT 계정으로 재접속
+                        sql>connect SCOTT/TIGER
+                        sql> 일반 사용자인 SCOTT 계정의 접속 실행창으로 이동된 거임
+                        sql>select * from tab;  SCOTT 계정에서 사용 가능한 table 리스트
+                        sql>select * from dept;  부서정보를 보유한 table의 모든 내용 검색
+
+
+                id : hr / pw : hr
+
+        - system이라는 관리자 계정이 자동 존재
+            - 설치시 pw만 사용자가 지정
+                manager 권장
+
+    2. db의 admin 권한
+        1. db에 사용자 생성 및 삭제
+        2. 사용자에게 권한 부여 및 삭제
+        ...
+
+
+
+
+
