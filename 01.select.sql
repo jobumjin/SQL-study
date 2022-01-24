@@ -120,4 +120,97 @@ select ename, empno
 from emp 
 where ename = 'SMITH';
 
+--18. 부서번호가 10번인 부서의 직원들 이름, 사번, 부서번호 검색
+-- 단, 사번은 내림차순 검색
+/* 10번 부서 조건 : where / ename, empno, deptno / 내림차순(order by ? desc)
+*/ 
+select deptno from emp;
+select ename, empno, deptno
+from emp
+where deptno = 10
+order by empno desc;
+
+--19. ? 기본 syntax를 기반으로 emp table을 사용하면서 문제 만들기
+-- ename, empno, deptno + 연봉 10명 검색 단 사번은 내림차순  limit 사용.
+
+--20. 급여가 900 이상인 사원들 이름, 사번, 급여 검색
+select ename, empno, sal from emp where sal >=900;
+
+--21. deptno 10 , job 은 manager(대문자로) 이름, 사번, deptno, job 검색
+-- 동등비교 연산자(=) / 조건식이 두개다 true (and)
+select ename, empno, deptno, job
+from emp
+where deptno = 10 and job = 'MANAGER'; --""은 안됨
+
+-- 대소문자 구분 없이 검색을 위한 해결책(대소문자 호환 함수)
+-- upper() : 소문자 -> 대문자 lower() : 대문자 -> 소문자
+/* 함수 - 독립적으로 개발되는 기능 / 참조 변수없이 함수명만으로 호출
+   메소드 - 클래스 내부에 구현되는 기능/객체 참조 변수로 호출 */
+select ename, empno, deptno, job
+from emp
+where deptno = 10 and job = upper('manager');
+
+--22. deptno가 10 아닌 직원들 사번, 부서번호만 검색
+-- 부정연산자 not / != / <>
+select ename, empno, deptno, job from emp where deptno != 10;
+select ename, empno, deptno, job from emp where deptno <> 10;
+select ename, empno, deptno, job from emp where not deptno = 10;
+
+--23. sal이 2000이하(sal <= 2000) 이거나 3000이상 (sal >= 3000) 사원명 급여 검색
+select ename, sal from emp;
+
+select ename, sal from emp where sal <= 2000 or sal >= 3000;
+-- 데이터 건수가 엄청 많을 경우 어떻게 확인?
+
+-- 7건수 검색 
+select ename, sal from emp where sal <= 2000;
+-- 2건수 검색
+select ename, sal from emp where sal >= 3000;
+-- 7+2 = 9건수
+
+--24. comm이 300 or 500 or 1400인 사원명 검색
+select ename, comm
+from emp
+where comm = 300 or comm = 500 or comm = 1400;
+
+-- in 연산식 사용해서 좀 더 개선된 코드
+select ename, comm
+from emp
+where comm in (300, 500, 1400);
+
+--25. ? comm이 300 or 500 or 1400이 아닌 사원명 검색
+select ename, comm
+from emp
+where comm not in (300, 500, 1400);
+
+select ename, comm
+from emp
+where not comm in (300, 500, 1400);
+
+--26. 81/09/28 날 입사한 사원 이름, 사번 검색
+-- data 타입 비교 학습
+-- data 타입은 '' 표현식 가능
+-- yy/mm/dd 포멧은 차후에 변경 예정(함수)
+select ename, empno, hiredate
+from emp
+where hiredate = '81/09/28';
+-- date 타입의 yy mm dd 의 구분자는 /, - 다 ok
+select ename, empno, hiredate
+from emp
+where hiredate = '81-09-28';
+
+--27. 날짜 타입의 범위를 기준으로 검색
+-- 범위비교시 연산자 : between ~ and
+select ename, empno, hiredate
+from emp
+where hiredate between '80/12/17' and '81/02/22';
+
+--28. 검색시 포함된 모든 데이터 검색하는 기술
+-- like 연산자 사용
+-- % : 철자 개수 무관하게 검색 / _ : 철자 개수 의미
+select enmae from emp
+where ename like 'S%';
+
+select enmae from emp
+where ename like 'S_';
 
