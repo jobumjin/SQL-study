@@ -1,0 +1,25 @@
+DB접속 app~
+
+db접속해서 sql문장 실행 및 결과 확인 단계
+- sqlplus  / 디비버 사용 이라 가정
+1단계 - db(oracle or mysql or mssql or db2...) 실행 
+2단계 - db의 ip/id/pw 로 접속 시도 
+	접속 성공
+	접속 실패
+3단계 - (접속 성공) sql문장 작성
+	- 엔터(실행)
+4단계 - 결과 확인(활용)
+	정상 실행
+		select - table 검색(result set)
+		insert/update/delete - 숫자값 반환
+	에러
+5단계 - 접속 종료(자원 반환)
+=============
+
+db(프린터) 종류와 무관하게 표준 API 실행 가능하는 app(pc)
+따라서  driver 필수
+
+
+pc <-> 프린터
+	- pc에 프린트 드라이버 설치 후 늘 사용
+	- 1회 설치 후에 사용
